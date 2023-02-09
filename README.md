@@ -56,7 +56,7 @@ By selecting a particular Region, you can optimize latency, minimize costs, or a
 
 5. Choose Create bucket.
 
-![AWS](Screenshot (48).png)
+![AWS](https://github.com/Sohaib63/Lab1-AWS-Intro-Computing/blob/main/Screenshot%20(48).png)
 
 
 ## Task 2: Uploading an Object to the Bucket
@@ -71,7 +71,7 @@ Now that you have created a bucket for your report data, you are ready to work w
 6. At the bottom of the page, choose `Upload`
 7. Your file is successfully uploaded when the green bar indicating `Upload succeeded` appears.
 8. In the `Upload: status` section in the upper right, choose `Close`
-![AWS](Screenshot (49).png)
+![AWS](https://github.com/Sohaib63/Lab1-AWS-Intro-Computing/blob/main/Screenshot%20(49).png)
 ## Task 3: Making an Object Public
 
 Security is a priority in Amazon S3, and before connecting an EC2 instance to the `reportbucket`, you want to test the bucket and object settings for security.
@@ -115,7 +115,7 @@ Note: In a production environment, it is recommended to use the least permissive
 - Note that in this example, you granted read access to only one specific object. If you want to grant access to the entire bucket, you need to use a bucket policy, which will be covered later in the lab.
 
 - In the next task, you will work with your EC2 instance to confirm connectivity to the S3 bucket.
-![AWS](Screenshot (50).png)
+![AWS](https://github.com/Sohaib63/Lab1-AWS-Intro-Computing/blob/main/Screenshot%20(50).png)
 ## Task 4: Testing Connectivity from the EC2 instance
 
 In this task, you will connect to your EC2 instance to test connectivity and security to the Amazon S3 reportbucket.
@@ -167,7 +167,7 @@ aws s3 cp report-test1.txt s3://reportbucket987987
 
 - Leave this window open. and go back to browser tab with the AWS console.
 - In the next task, you create a bucket policy to add the PutObject permission.
-![AWS](Screenshot (51).png)
+![AWS](https://github.com/Sohaib63/Lab1-AWS-Intro-Computing/blob/main/Screenshot%20(51).png)
 ## Task 5: Creating a bucket policy
 
 A bucket policy is a set of permissions associated with an S3 bucket. It is used to control access to an entire bucket or to specific directories within a bucket. 
@@ -373,7 +373,7 @@ If you had trouble generating the policy on your own, you can copy the policy be
 
 36. Leave the tab open with the sample-file.txt displayed. You return to this tab in the next task.
 In this task, you created a bucket policy to allow specific access rights to your bucket. In the next section, you explore how to keep copies of files to prevent against accidental deletion.
-![AWS](Screenshot (52).png)
+![AWS](https://github.com/Sohaib63/Lab1-AWS-Intro-Computing/blob/main/Screenshot%20(52).png)
 
 ## Task 6: Exploring versioning
 
@@ -480,7 +480,7 @@ Notice that there is now only one version of the sample-file.txt file. When dele
 37. In a new browser tab, paste the link into the address field, and then press Enter.
 
 The browser page displays the text of the original version of the sample-file.txt object.
-![AWS](Screenshot (53).png)
+![AWS](https://github.com/Sohaib63/Lab1-AWS-Intro-Computing/blob/main/Screenshot%20(53).png)
 ## Summary
 
 You have successfully created an S3 bucket for your company to use to store report data from your EC2 instance. You created a bucket policy so that the EC2 instance can PutObjects and GetObject from the reportbucket, and you successfully tested uploading and downloading files from the EC2 instance to test the bucket policy. You have enabled versioning on the S3 bucket to protect against accidental object deletion. You have successfully completed the configuration for your EC2 reportbucket. Congratulations!
