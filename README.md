@@ -112,3 +112,55 @@ Note: In a production environment, it is recommended to use the least permissive
 - Note that in this example, you granted read access to only one specific object. If you want to grant access to the entire bucket, you need to use a bucket policy, which will be covered later in the lab.
 
 - In the next task, you will work with your EC2 instance to confirm connectivity to the S3 bucket.
+
+## Task 4: Testing Connectivity from the EC2 instance
+
+In this task, you will connect to your EC2 instance to test connectivity and security to the Amazon S3 reportbucket.
+
+### Prerequisites
+
+- You should already be signed in to the AWS Management Console. If not, follow the steps in the "Start Lab" section to sign in to the AWS Management Console.
+
+### Steps
+
+1. On the Services menu, choose EC2.
+2. On the EC2 Dashboard, under the Resources section, choose Instances (running).
+3. Select the check box for Bastion Host and choose Connect.
+4. In the Connect to instance window, select the Session Manager tab for the connection method.
+   - With AWS Systems Manager Session Manager, you can connect to the bastion host instance without the need for specific ports to be open on your firewall or Amazon Virtual Private Cloud (Amazon VPC) security group. Refer to AWS Systems Manager Session Manager in the Additional resources section at the end of this lab for more information.
+5. Choose Connect.
+   - A new browser tab or window opens with a connection to the bastion host instance.
+6. In the bastion host session, enter the following command to change to the home directory (/home/ssm-user/):
+cd ~
+- The output returns you to the command prompt.
+7. Enter the following command to verify that you are in the home directory:
+pwd
+- The output should be as follows:
+/home/ssm-user
+8. Enter the following command to list all of your S3 buckets:
+aws s3 ls
+- The output should look similar to the following:
+2020-11-11 22:34:46 reportbucket987987
+- You see the reportbucket you created and lab auto-generated buckets.
+9. Enter the following command to list all the objects in your reportbucket:
+aws s3 ls s3://reportbucket(NUMBER)
+- The command looks similar to the following: 
+aws s3 ls s3://reportbucket987987
+- The output should look like the following:
+2020-11-11 15:46:34 86065 new-report.png
+10. Enter the following command to change directories into the reports directory:
+cd reports
+- The output returns you to the command prompt.
+11. Enter the following command to list the contents of the directory:
+ls
+- The output shows some files created in your reports directory to test the application:
+dolphins.jpg files.zip report-test.txt report-test1.txt report-test2.txt report-test3.txt whale.jpg
+12. Enter the following command to see if you can copy a file to the S3 bucket:
+aws s3 cp report-test1.txt s3://reportbucket(NUMBER)
+- The command looks similar to this:
+aws s3 cp report-test1.txt s3://reportbucket987987
+
+- The output indicates an upload failed error. This error occurs because you have read-only rights to the bucket and do not have the permissions to perform the PutObject action.
+
+- Leave this window open. and go back to browser tab with the AWS console.
+- In the next task, you create a bucket policy to add the PutObject permission.
