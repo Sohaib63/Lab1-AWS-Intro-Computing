@@ -68,3 +68,47 @@ Now that you have created a bucket for your report data, you are ready to work w
 6. At the bottom of the page, choose `Upload`
 7. Your file is successfully uploaded when the green bar indicating `Upload succeeded` appears.
 8. In the `Upload: status` section in the upper right, choose `Close`
+
+## Task 3: Making an Object Public
+
+Security is a priority in Amazon S3, and before connecting an EC2 instance to the `reportbucket`, you want to test the bucket and object settings for security.
+
+1. Confirm that the object is private by default
+    - Go to the `reportbucket` overview page and click on the `Objects` tab.
+    - Locate the `new-report.png` object and click on the file name to open the `new-report.png` overview page.
+    - In the `Object overview` section, locate and copy the `Object URL` link.
+    - Open a new browser tab, paste the object URL link into the address field and press Enter.
+    - You should receive an `Access Denied` error because objects in Amazon S3 are private by default.
+
+2. Make the object publicly accessible
+    - Return to the web browser tab with the S3 Management Console. You should still be on the `new-report.png` Object overview tab.
+    - In the upper right, choose the `Object actions` dropdown menu. You will notice that `Make public via ACL` is greyed out.
+    - Go back to the main `reportbucket` overview page by choosing the reportbucket name in the navigation.
+    - Choose the `Permissions` tab.
+    - Under `Object Ownership`, choose `Edit`.
+    - Enable `ACLs` and choose `Bucket owner preferred`.
+    - Check the box next to "I acknowledge that ACLs will be restored".
+    - Choose `Save Changes`.
+    - Under `Block public access (bucket settings)`, choose `Edit` to change the settings.
+    - Clear the check box for the `Block all public access` option and leave all other options cleared. 
+
+Note: In a production environment, it is recommended to use the least permissive settings possible. Refer to the Amazon S3 block public access for more information.
+
+- Choose Save changes
+- A dialogue box opens asking you to confirm your changes. Enter "confirm" in the field, and then choose Confirm
+- A message saying "Successfully edited Block Public Access settings for this bucket." should display at the top of the window.
+
+- Choose the Objects tab.
+- Choose the `new-report.png` file name.
+- At the upper right on the `new-report.png` overview page, choose the Object actions dropdown menu, and select "Make public".
+- Note the warning: "When public read access is enabled and not blocked by Block Public Access settings, anyone in the world can access the specified objects." This warning reminds you that making the object public means that everyone in the world can read it. 
+
+- Choose "Make public" and you should see a green banner saying "Successfully edited public access" at the top of the window.
+- In the upper right, choose "Close" to return to the `new-report.png` object overview.
+- Return to the browser tab that displayed "Access Denied" for the `new-report.png` object and refresh the page.
+- The `new-report.png` object should now display properly because it is publicly accessible.
+
+- Close the web browser tab that displays the `new-report.png` image and return to the tab with the Amazon S3 Management Console.
+- Note that in this example, you granted read access to only one specific object. If you want to grant access to the entire bucket, you need to use a bucket policy, which will be covered later in the lab.
+
+- In the next task, you will work with your EC2 instance to confirm connectivity to the S3 bucket.
