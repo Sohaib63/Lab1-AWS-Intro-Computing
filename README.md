@@ -55,7 +55,10 @@ Example bucket name: `reportbucket987987`
 By selecting a particular Region, you can optimize latency, minimize costs, or address regulatory requirements. Objects stored in a Region never leave that Region unless you explicitly transfer them to another Region.
 
 5. Choose Create bucket.
+
 ![AWS](Screenshot (48).png)
+
+
 ## Task 2: Uploading an Object to the Bucket
 
 Now that you have created a bucket for your report data, you are ready to work with objects. An object can be any kind of file: a text file, a photo, a video, a .zip file, and so on. When you add an object to Amazon S3, you have the option to include metadata with the object and set permissions to control access to the object.
